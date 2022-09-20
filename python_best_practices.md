@@ -70,5 +70,35 @@ make sure your virtual environment is active
 e.g. `source myenv/bin/activate`
 then install the ipykernal package
 `pip install ipykernel`
+
 #### Create a new kernel for your Jupyter Notebook
 `ipython kernel install --user --name=projectname
+
+
+## Sensitive Data
+Sometimes when you're coding you will have sensitive data that you don't want to share with others. For example passwords to your wifi network, and API keys. This can be tricky since we often publish our code online using systems like Github.
+My suggested solution to this problem is: dotenv
+
+### What is a dotenv?
+When files don't have a name, but just have a file type (e.g. .png or .py or .jpeg) they **don't get down by the filesystem**. A dotenv is a file named .env which will contain just your sensitive data. 
+
+### How to create a dotenv: 
+* Make sure you are in your project folder
+* create a file called .env
+    * e.g. if on the command line on Mac, Linux or WSLuse `touch .env`
+* add content to the file in this format
+```
+WIFI_NAME=J206
+WIFI_PASSWORD=xyz234
+YOUTUBE_API_KEY=secretkey
+```
+
+### Loading your .env in your script
+make sure dotenv is installed
+`pip install python-dotenv`
+
+in your script add this code
+```
+from dotenv import load_dotenv
+load_dotenv()
+```
